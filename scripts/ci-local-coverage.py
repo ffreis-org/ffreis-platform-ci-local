@@ -103,6 +103,8 @@ def build_coverage(registry, in_ci, sarif_counts, lane_b, act_ran):
     for tool in sorted(in_ci):
         row = by_tool[tool]
         lane, reason = row["lane"], row["reason"]
+        if lane == "na":
+            continue  # not a findings producer (build/test/fmt/housekeeping)
         if lane == "cannot":
             rows.append((tool, "cannot-run", reason))
         elif lane == "B":

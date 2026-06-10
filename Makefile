@@ -7,7 +7,7 @@ SCRIPTS := $(shell find scripts/ -maxdepth 1 -name '*.sh' ! -type l 2>/dev/null 
 PYFILES := $(shell find scripts/ -maxdepth 1 -name '*.py' ! -type l 2>/dev/null | sort)
 BATS_FILES := $(wildcard tests/*.bats)
 
-.PHONY: help ci lint shellcheck py-check shfmt-check test self-test ci-local sonarqube-up sonarqube-down
+.PHONY: help ci lint shellcheck py-check shfmt-check test self-test ci-local drift sonarqube-up sonarqube-down
 
 help:
 	@echo "ffreis-platform-ci-local targets:"
@@ -19,6 +19,7 @@ help:
 	@echo "  make test        — bats suite + self-test of the python helpers"
 	@echo "  make self-test   — exercise ci-local-findings.py + ci-local-coverage.py on fixtures"
 	@echo "  make ci-local    — dogfood: run the harness on THIS repo (ARGS=… to pass flags)"
+	@echo "  make drift       — drift gate: every CI workflow ref must be classified (ENFORCE=1 to fail)"
 
 ci: lint test
 
@@ -64,6 +65,12 @@ self-test:
 # Dogfood the harness on this repo. `make ci-local ARGS=--findings` etc.
 ci-local:
 	@bash scripts/run-ci-local.sh $(ARGS)
+
+# Drift gate: every reusable-workflow this repo's CI references must be classified
+# in the registry. `make drift` warns; `make drift ENFORCE=1` fails on drift.
+drift:
+	@python3 scripts/ci-local-drift.py --registry scripts/ci-local-tools.tsv \
+	  --workflows .github/workflows $(if $(ENFORCE),--enforce)
 
 # Local SonarQube server lifecycle (the Lane-B sonar backend). Boot once and
 # reuse across runs; tear down when done. Refuses to boot below safe RAM/disk.
