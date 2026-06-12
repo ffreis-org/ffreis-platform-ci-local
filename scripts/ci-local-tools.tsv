@@ -51,6 +51,7 @@ dependency-review	cannot	dependency-review	-	GitHub-only API that diffs a PR's d
 ruff	A	python-lint	pyproject.toml requirements.txt	-
 shellcheck	A	shellcheck	-	-
 actionlint	A	actionlint	-	-
+config-validate	A	config-validate	-	-
 markdownlint	A	markdownlint	-	-
 typos	A	typos	-	-
 checkov	A	checkov	-	-
