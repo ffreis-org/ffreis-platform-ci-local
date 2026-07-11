@@ -52,6 +52,7 @@ ruff	A	python-lint	pyproject.toml requirements.txt	-
 shellcheck	A	shellcheck	-	-
 actionlint	A	actionlint	-	-
 config-validate	A	config-validate	-	-
+ansible-lint	A	ansible-lint	-	-
 markdownlint	A	markdownlint	-	-
 typos	A	typos	-	-
 checkov	A	checkov	-	-
