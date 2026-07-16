@@ -16,7 +16,7 @@ jobs:
   ci-local-coverage:
     permissions:
       contents: read
-    uses: FelipeFuhr/ffreis-workflows-general/.github/workflows/general-ci-local-coverage.yml@12c41714d56ff512e8093cd96a2ab11e60aced17
+    uses: ffreis-org/ffreis-workflows-general/.github/workflows/general-ci-local-coverage.yml@12c41714d56ff512e8093cd96a2ab11e60aced17
     with:
       mode: refs
       enforce: true
@@ -25,7 +25,7 @@ jobs:
   actionlint:
     permissions:
       contents: read
-    uses: FelipeFuhr/ffreis-workflows-general/.github/workflows/general-actionlint.yml@12c41714d56ff512e8093cd96a2ab11e60aced17
+    uses: ffreis-org/ffreis-workflows-general/.github/workflows/general-actionlint.yml@12c41714d56ff512e8093cd96a2ab11e60aced17
 
   lint-and-test:
     name: lint + test
