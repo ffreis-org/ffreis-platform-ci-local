@@ -42,7 +42,7 @@ clippy	A	rust-lint|clippy	Cargo.toml	-
 cargo-deny	A	rust-deny|cargo-deny	Cargo.toml	-
 cargo-audit	A	rust-security|cargo-audit	Cargo.toml	-
 pip-audit	A	pip-audit|python-security	pyproject.toml requirements.txt	-
-mobsfscan	A	swift-security|mobsfscan	-	-
+mobsfscan	A	swift-security|kotlin-security|mobsfscan	-	-
 codeql	B	codeql	-	codeql CLI not installed (run `gh extension install github/gh-codeql` or install the CodeQL CLI bundle)
 sonar	B	sonar|sonarcloud|code-quality	sonar-project.properties	local SonarQube not reachable (the harness starts one from .mcp.json; see --sonar-cloud for the SonarCloud path)
 scorecard	cannot	scorecard	-	measures repo settings via the GitHub API — no local code-scan equivalent
@@ -70,4 +70,5 @@ tf-aux	na	^tf-(validate|fmt|plan|apply|destroy|docs|cost|drift|test-tidy)$	-	pla
 container-aux	na	^container-(build|sign|sbom)$	-	image build/sign/sbom — not a findings scanner
 binding-aux	na	^binding-(build|abi-parity|release)$	-	native binding build/release
 swift-aux	na	^swift-(build|format|lint)$	-	build/test/fmt gate — no findings to capture
+kotlin-aux	na	^kotlin-(build|lint|test)$	-	build/test/fmt gate — no findings to capture
 housekeeping	na	^(general-|devops-)?(release-please|release|stale|labeler|semantic-pr|lefthook|lefthook-complex|run-commands|website-dispatch|workflow-failure-alert|ci-failure-alert|promote-gate|quality-seo|quality-live|kb-sync|http-smoke|pr-summary|pr-size|pr-hygiene|pr-labeler|commit-messages|workflows-policy|pre-commit|sbom|automation|ai-standardize)$	-	housekeeping/orchestration — not a findings producer
